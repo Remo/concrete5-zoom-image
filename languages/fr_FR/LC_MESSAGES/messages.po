@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: zoom_image 1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-09 17:36+0100\n"
+"PO-Revision-Date: 2011-03-09 17:41+0100\n"
+"Last-Translator: cali <cali@concrete5.fr>\n"
+"Language-Team: Concrete5 FR <team@concrete5.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: blocks/zoom_image/add.php:3
+#: blocks/zoom_image/edit.php:2
+#: blocks/zoom_image/view.php:2
+#: blocks/zoom_image/controller.php:4
+#: controller.php:3
+msgid "Access Denied."
+msgstr "Accès refusé."
+
+#: blocks/zoom_image/form.php:2
+msgid "Image"
+msgstr "Image"
+
+#: blocks/zoom_image/form.php:3
+msgid "Choose Image"
+msgstr "choisir une image"
+
+#: blocks/zoom_image/form.php:7
+msgid "Alt Text"
+msgstr "Texte alternatif"
+
+#: blocks/zoom_image/form.php:15
+msgid "Max Thumbnail Width"
+msgstr "Largeur Max de la miniature"
+
+#: blocks/zoom_image/form.php:20
+msgid "Max Thumbnail Height"
+msgstr "Hauteur Max de la miniature"
+
+#: blocks/zoom_image/controller.php:15
+#: controller.php:12
+msgid "Adds images and onstates from the library to pages."
+msgstr "Ajoutes des images, affihe leurs miniature et les agrandit au clic."
+
+#: blocks/zoom_image/controller.php:19
+#: controller.php:16
+msgid "Zoom Image"
+msgstr "Zoom Image"
+
+#: blocks/zoom_image/controller.php:24
+msgid "You must select an image."
+msgstr "Vous devez sélectionner une image."
+
