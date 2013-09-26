@@ -1,9 +1,10 @@
-<?php     
+<?php
 
-defined('C5_EXECUTE') or die(_("Access Denied."));
+defined('C5_EXECUTE') or die('Access Denied.');
+
 $includeAssetLibrary = true;
 $assetLibraryPassThru = array(
-	'type' => 'image'
+    'type' => 'image'
 );
 $al = Loader::helper('concrete/asset_library');
 $bf = null;
@@ -13,4 +14,3 @@ $thumbnailWidth = 200;
 $thumbnailHeight = 200;
 
 include('form.php');
-?>
