@@ -1,3 +1,5 @@
+1.0.6 - Added option to hide original image when zoomed
+
 1.0.2 - Added some inline styles to avoid the ugly image pre loading effect
 
 1.0.1 - Replace direct json_encode call with a call to the concrete5 JSONHelper, which should ensure that older systems without json_encode can use the gallery block.
