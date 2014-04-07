@@ -1,8 +1,7 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: zoom_image 1.0.3\n"
+msgstr "Project-Id-Version: zoom_image 1.0.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-20 21:30+0000\n"
+"POT-Creation-Date: 2014-04-07 12:32+0000\n"
 "PO-Revision-Date: 2013-08-06 08:29+0100\n"
 "Last-Translator: Remo Laubacher <remo.laubacher@mesch.ch>\n"
 "Language-Team: \n"
@@ -10,31 +9,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Poedit-Basepath: ../../../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Language: it_IT\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: Italy\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: packages/zoom_image/blocks/zoom_image/add.php:3
-#: packages/zoom_image/blocks/zoom_image/controller.php:4
-#: packages/zoom_image/blocks/zoom_image/edit.php:2
-#: packages/zoom_image/blocks/zoom_image/view.php:2
-#: packages/zoom_image/controller.php:3
-msgid "Access Denied."
-msgstr "Accesso negato."
-
-#: packages/zoom_image/blocks/zoom_image/controller.php:15
+#: packages/zoom_image/blocks/zoom_image/controller.php:17
 #: packages/zoom_image/controller.php:12
 msgid "Adds images and onstates from the library to pages."
 msgstr "Aggiunge alle pagine immagini dalla libreria."
 
-#: packages/zoom_image/blocks/zoom_image/controller.php:19
+#: packages/zoom_image/blocks/zoom_image/controller.php:21
 #: packages/zoom_image/controller.php:16
 msgid "Zoom Image"
 msgstr "Zoom Image"
 
-#: packages/zoom_image/blocks/zoom_image/controller.php:24
+#: packages/zoom_image/blocks/zoom_image/controller.php:26
 msgid "You must select an image."
 msgstr "Selezionare un’immagine."
 
@@ -61,3 +54,14 @@ msgstr "Max larghezza miniatura"
 #: packages/zoom_image/blocks/zoom_image/form.php:20
 msgid "Max Thumbnail Height"
 msgstr "Max altezza miniatura"
+
+#: packages/zoom_image/blocks/zoom_image/form.php:25
+msgid "Options"
+msgstr ""
+
+#: packages/zoom_image/blocks/zoom_image/form.php:28
+msgid "Hide original image when zoomed"
+msgstr ""
+
+#~ msgid "Access Denied."
+#~ msgstr "Accesso negato."
