@@ -49,6 +49,7 @@ jQuery.fn.fancyZoom = function(options){
   var zoom_close    = $('#zoom_close');
   var zoom_content  = $('#zoom_content');
   var middle_row    = $('td.ml,td.mm,td.mr');
+  var current_zoom  = null;
   
   this.each(function(i) {
     $($(this).attr('href')).hide();
@@ -59,8 +60,9 @@ jQuery.fn.fancyZoom = function(options){
   
   function show(e) {
     if (zooming) return false;
+    current_zoom = $(this);
 		zooming         = true;
-		var content_div = $($(this).attr('href'));
+		var content_div = $(current_zoom.attr('href'));
   	var zoom_width  = options.width;
 		var zoom_height = options.height;
 		
@@ -120,6 +122,10 @@ jQuery.fn.fancyZoom = function(options){
 			zoom_close.show();
 			zooming = false;
     })
+    if(current_zoom.data('hide-original-on-zoom') === 'yes') {
+   	 current_zoom.data('fancyzoom.initial-visibility', current_zoom.css('visibility'));
+   	 current_zoom.css('visibility', 'hidden');
+    }
     return false;
   }
   
@@ -144,6 +150,10 @@ jQuery.fn.fancyZoom = function(options){
   		}
       unfixBackgroundsForIE();
 			zooming = false;
+		if(current_zoom.data('hide-original-on-zoom') === 'yes') {
+			current_zoom.css('visibility', current_zoom.data('fancyzoom.initial-visibility'));
+			current_zoom.data('fancyzoom.initial-visibility', null);
+		}
     });
     return false;
   }

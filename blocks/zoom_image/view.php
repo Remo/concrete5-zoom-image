@@ -19,7 +19,7 @@ if ($version_arr[1] == 2) {
 }
 ?>
 
-<a class="zoomImage" href="#zoomImage<?php echo $bID;?>">
+<a class="zoomImage" href="#zoomImage<?php echo $bID;?>"<?php echo empty($hideOriginalOnZoom) ? '' : '  data-hide-original-on-zoom="yes"'; ?>>
     <img src="<?php echo $thumbnail->src;?>" 
          alt="<?php echo $controller->altText;?>"
          width="<?php echo $thumbnail->width;?>" 

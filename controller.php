@@ -6,7 +6,7 @@ class ZoomImagePackage extends Package {
 
     protected $pkgHandle = 'zoom_image';
     protected $appVersionRequired = '5.2.0';
-    protected $pkgVersion = '1.0.5';
+    protected $pkgVersion = '1.0.6';
 
     public function getPackageDescription() {
         return t("Adds images and onstates from the library to pages.");
