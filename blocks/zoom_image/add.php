@@ -12,5 +12,6 @@ $bf = null;
 $altText = '';
 $thumbnailWidth = 200;
 $thumbnailHeight = 200;
+$hideOriginalOnZoom = 0;
 
 include('form.php');

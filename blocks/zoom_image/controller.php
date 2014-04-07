@@ -6,8 +6,8 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 class ZoomImageBlockController extends BlockController {
 
-    protected $btInterfaceWidth = 300;
-    protected $btInterfaceHeight = 320;
+    protected $btInterfaceWidth = 450;
+    protected $btInterfaceHeight = 500;
     protected $btTable = 'btZoomImage';
 
     /**
@@ -61,6 +61,7 @@ class ZoomImageBlockController extends BlockController {
     public function save($args) {
         $args['fID'] = ($args['fID'] != '') ? $args['fID'] : 0;
         $args['displayCaption'] = ($args['displayCaption'] != '') ? $args['displayCaption'] : 0;
+        $args['hideOriginalOnZoom'] = empty($args['hideOriginalOnZoom']) ? 0 : 1;
         parent::save($args);
     }
 

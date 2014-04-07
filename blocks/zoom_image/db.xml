@@ -16,6 +16,7 @@
             <unsigned />
             <notnull />
             <default value="0" />
-        </field>		
+        </field>
+        <field name="hideOriginalOnZoom" type="L"></field>		
     </table>
 </schema>
