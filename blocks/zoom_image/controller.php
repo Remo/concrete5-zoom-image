@@ -62,6 +62,7 @@ class ZoomImageBlockController extends BlockController {
         $args['fID'] = ($args['fID'] != '') ? $args['fID'] : 0;
         $args['displayCaption'] = ($args['displayCaption'] != '') ? $args['displayCaption'] : 0;
         $args['hideOriginalOnZoom'] = empty($args['hideOriginalOnZoom']) ? 0 : 1;
+        $args['limitMaxZoom'] = empty($args['limitMaxZoom']) ? 0 : 1;
         parent::save($args);
     }
 

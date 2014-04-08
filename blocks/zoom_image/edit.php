@@ -19,5 +19,6 @@ $thumbnailWidth = $controller->thumbnailWidth;
 $thumbnailHeight = $controller->thumbnailHeight;
 
 $hideOriginalOnZoom = $controller->hideOriginalOnZoom ? 1 : 0;
+$limitMaxZoom = $controller->limitMaxZoom ? 1 : 0;
 
 include('form.php');

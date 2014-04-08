@@ -22,9 +22,13 @@
 </div>
 
 <div class="ccm-block-field-group">
-    <h2><?php echo t('Options')?></h2>
-    <label>
-    	<?php echo $form->checkbox('hideOriginalOnZoom', 1, $hideOriginalOnZoom); ?>
-    	<?php echo t('Hide original image when zoomed'); ?>
-    </label>
+	<h2><?php echo t('Options')?></h2>
+	<label>
+		<?php echo $form->checkbox('hideOriginalOnZoom', 1, $hideOriginalOnZoom); ?>
+		<?php echo t('Hide original image when zoomed'); ?>
+	</label><br />
+	<label>
+		<?php echo $form->checkbox('limitMaxZoom', 1, $limitMaxZoom); ?>
+		<?php echo t('Limit max zoom to window size'); ?>
+	</label>
 </div>

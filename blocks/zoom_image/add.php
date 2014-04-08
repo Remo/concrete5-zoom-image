@@ -13,5 +13,6 @@ $altText = '';
 $thumbnailWidth = 200;
 $thumbnailHeight = 200;
 $hideOriginalOnZoom = 0;
+$limitMaxZoom = 0;
 
 include('form.php');

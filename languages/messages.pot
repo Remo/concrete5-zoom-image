@@ -1,7 +1,7 @@
 msgid ""
-msgstr "Project-Id-Version: zoom_image 1.0.6\n"
+msgstr "Project-Id-Version: zoom_image 1.0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-07 12:32+0000\n"
+"POT-Creation-Date: 2014-04-08 19:44+0000\n"
 "MIME-Version: 1.0\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -53,4 +53,8 @@ msgstr ""
 
 #: packages/zoom_image/blocks/zoom_image/form.php:28
 msgid "Hide original image when zoomed"
+msgstr ""
+
+#: packages/zoom_image/blocks/zoom_image/form.php:32
+msgid "Limit max zoom to window size"
 msgstr ""

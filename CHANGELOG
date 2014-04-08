@@ -1,3 +1,5 @@
+1.0.7 - Added option to limit the maximum size of the zoomed image
+
 1.0.6 - Added option to hide original image when zoomed
 
 1.0.2 - Added some inline styles to avoid the ugly image pre loading effect
