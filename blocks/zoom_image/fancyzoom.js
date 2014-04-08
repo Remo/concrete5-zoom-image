@@ -1,11 +1,11 @@
 jQuery.fn.fancyZoom = function(options) {
 
-options   = options || {};
+options = options || {};
 var directory = options && options.directory ? options.directory : 'images';
-var zooming   = false;
+var zooming = false;
 
 if ($('#zoom').length === 0) {
-	var ext = $.browser.msie ? 'gif' : 'png';
+	var ext = (('browser' in $) && $.browser.msie) ? 'gif' : 'png';
 	$('body').append([
 		'<div id="zoom" style="display:none; position: relative; z-index: 900;">',
 			'<table id="zoom_table" style="border-collapse:collapse; width:100%; height:100%;">',
@@ -21,7 +21,7 @@ if ($('#zoom').length === 0) {
 							'<div id="zoom_content">',
 							'</div>',
 						'</td>',
-						'<td class="mr" style="background:url(' + directory + '/mr.' + ext + ') 100% 0 repeat-y;  width:20px; overflow:hidden;" />',
+						'<td class="mr" style="background:url(' + directory + '/mr.' + ext + ') 100% 0 repeat-y; width:20px; overflow:hidden;" />',
 					'</tr>',
 					'<tr>',
 						'<td class="bl" style="background:url(' + directory + '/bl.' + ext + ') 0 100% no-repeat; width:20px; height:20px; overflow:hidden;" />',
@@ -42,9 +42,9 @@ if ($('#zoom').length === 0) {
 	$('#zoom_close').click(hide);
 }
 
-var zoom_close    = $('#zoom_close');
-var zoom_content  = $('#zoom_content');
-var current_zoom  = null;
+var zoom_close = $('#zoom_close');
+var zoom_content = $('#zoom_content');
+var current_zoom = null;
 
 this.each(function() {
 	$($(this).attr('href')).hide();
@@ -58,37 +58,48 @@ function show(e) {
 		return false;
 	}
 	current_zoom = $(this);
-	zooming         = true;
+	zooming = true;
 	var content_div = $(current_zoom.attr('href'));
-	var zoom_width  = options.width;
-	var zoom_height = options.height;
+	var window_size = {
+		width: window.innerWidth || (window.document.documentElement.clientWidth || window.document.body.clientWidth),
+		height: window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight),
+		x: window.pageXOffset || (window.document.documentElement.scrollLeft || window.document.body.scrollLeft),
+		y: window.pageYOffset || (window.document.documentElement.scrollTop || window.document.body.scrollTop)
 
-	var width       = window.innerWidth || (window.document.documentElement.clientWidth || window.document.body.clientWidth);
-	var height      = window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight);
-	var x           = window.pageXOffset || (window.document.documentElement.scrollLeft || window.document.body.scrollLeft);
-	var y           = window.pageYOffset || (window.document.documentElement.scrollTop || window.document.body.scrollTop);
-	var window_size = {'width':width, 'height':height, 'x':x, 'y':y};
-
-	width           = (zoom_width || content_div.width()) + 60;
-	height          = (zoom_height || content_div.height()) + 60;
-	var d           = window_size;
-
+	};
+	var width = (options.width || content_div.width()) + 60;
+	var height = (options.height || content_div.height()) + 60;
+	if(current_zoom.data('limit-max-zoom') === 'yes') {
+		var maxWidth = Math.max(70, Math.min(width, window_size.width - 60));
+		var maxHeight = Math.max(70, Math.min(height, window_size.height - 60));
+		if((width > maxWidth) || (height > maxHeight)) {
+			var ratio = width / height;
+			if(ratio > (maxWidth / maxHeight)) {
+				width = maxWidth;
+				height = Math.ceil(width / ratio);
+			}
+			else {
+				height = maxHeight;
+				width = Math.ceil(ratio * maxHeight);
+			}
+		}
+	}
 	// ensure that newTop is at least 0 so it doesn't hide close button
-	var newTop      = Math.max((d.height/2) - (height/2) + y, 0);
-	var newLeft     = (d.width/2) - (width/2);
-	var curTop      = e.pageY;
-	var curLeft     = e.pageX;
+	var newTop = Math.max((window_size.height / 2) - (height / 2) + window_size.y, 0);
+	var newLeft = (window_size.width / 2) - (width / 2);
+	var curTop = e.pageY;
+	var curLeft = e.pageX;
 
 	zoom_close.attr('curTop', curTop);
 	zoom_close.attr('curLeft', curLeft);
 	zoom_close.attr('scaleImg', options.scaleImg ? 'true' : 'false');
 
 	$('#zoom').hide().css({
-		position	: 'absolute',
-		top				: curTop + 'px',
-		left			: curLeft + 'px',
-		width     : '1px',
-		height    : '1px'
+		position: 'absolute',
+		top: curTop + 'px',
+		left: curLeft + 'px',
+		width: '1px',
+		height: '1px'
 	});
 
 	fixBackgroundsForIE();
@@ -108,11 +119,11 @@ function show(e) {
 
 	$('#zoom').animate(
 		{
-			top     : newTop + 'px',
-			left    : newLeft + 'px',
-			opacity : "show",
-			width   : width,
-			height  : height
+			top: newTop + 'px',
+			left: newLeft + 'px',
+			opacity: "show",
+			width: width,
+			height: height
 		},
 		500,
 		null,
@@ -136,7 +147,7 @@ function hide() {
 	if (zooming) {
 		return false;
 	}
-	zooming         = true;
+	zooming = true;
 	$('#zoom').unbind('click');
 	fixBackgroundsForIE();
 	if (zoom_close.attr('scaleImg') != 'true') {
@@ -145,11 +156,11 @@ function hide() {
 	zoom_close.hide();
 	$('#zoom').animate(
 		{
-			top     : zoom_close.attr('curTop') + 'px',
-			left    : zoom_close.attr('curLeft') + 'px',
-			opacity : "hide",
-			width   : '1px',
-			height  : '1px'
+			top: zoom_close.attr('curTop') + 'px',
+			left: zoom_close.attr('curLeft') + 'px',
+			opacity: "hide",
+			width: '1px',
+			height: '1px'
 		},
 		500,
 		null,

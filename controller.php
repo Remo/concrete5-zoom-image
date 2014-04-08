@@ -6,7 +6,7 @@ class ZoomImagePackage extends Package {
 
     protected $pkgHandle = 'zoom_image';
     protected $appVersionRequired = '5.2.0';
-    protected $pkgVersion = '1.0.6';
+    protected $pkgVersion = '1.0.7';
 
     public function getPackageDescription() {
         return t("Adds images and onstates from the library to pages.");
@@ -21,6 +21,14 @@ class ZoomImagePackage extends Package {
 
         // install block		
         BlockType::installBlockTypeFromPackage('zoom_image', $pkg);
+    }
+    
+    public function upgrade() {
+        parent::upgrade();
+        $bt = BlockType::getByHandle('zoom_image');
+        if(is_object($bt)) {
+            $bt->refresh();
+        }
     }
 
 }
