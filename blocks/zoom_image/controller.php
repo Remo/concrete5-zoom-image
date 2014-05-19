@@ -1,10 +1,17 @@
 <?php
 
-Loader::block('library_file');
+namespace Concrete\Package\ZoomImage\Block\ZoomImage;
 
-defined('C5_EXECUTE') or die(_("Access Denied."));
+use \Concrete\Core\Block\BlockController,
+    File,
+    View,
+    Loader,
+    BlockType,
+    Block;
 
-class ZoomImageBlockController extends BlockController {
+defined('C5_EXECUTE') or die('Access Denied.');
+
+class Controller extends BlockController {
 
     protected $btInterfaceWidth = 450;
     protected $btInterfaceHeight = 500;
@@ -38,8 +45,8 @@ class ZoomImageBlockController extends BlockController {
 
         $uh = Loader::helper('concrete/urls');
 
-        $v->addHeaderItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.min.js"></script>', 'CONTROLLER');
-        $v->addHeaderItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>', 'CONTROLLER');
+        $v->addFooterItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.js"></script>');
+        $v->addFooterItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>');
     }
 
     function getFileID() {
@@ -66,6 +73,16 @@ class ZoomImageBlockController extends BlockController {
         parent::save($args);
     }
 
-}
+    public function view() {
+        $ih = Loader::helper('image');
 
-?>
+        $fileObject = $this->getFileObject();
+
+        $fileName = $fileObject->getRelativePath();
+        $thumbnail = $ih->getThumbnail($fileObject, intval($this->thumbnailWidth), intval($this->thumbnailHeight));
+
+        $this->set('fileName', $fileName);
+        $this->set('thumbnail', $thumbnail);
+    }
+
+}
