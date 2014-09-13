@@ -1,12 +1,16 @@
 <?php
 
-defined('C5_EXECUTE') or die(_("Access Denied."));
+namespace Concrete\Package\ZoomImage;
 
-class ZoomImagePackage extends Package {
+use Concrete\Core\Block\BlockType\BlockType;
+
+defined('C5_EXECUTE') or die('Access Denied.');
+
+class Controller extends \Concrete\Core\Package\Package {
 
     protected $pkgHandle = 'zoom_image';
     protected $appVersionRequired = '5.2.0';
-    protected $pkgVersion = '1.0.7';
+    protected $pkgVersion = '2.0.0';
 
     public function getPackageDescription() {
         return t("Adds images and onstates from the library to pages.");
@@ -23,12 +27,5 @@ class ZoomImagePackage extends Package {
         BlockType::installBlockTypeFromPackage('zoom_image', $pkg);
     }
     
-    public function upgrade() {
-        parent::upgrade();
-        $bt = BlockType::getByHandle('zoom_image');
-        if(is_object($bt)) {
-            $bt->refresh();
-        }
-    }
 
 }

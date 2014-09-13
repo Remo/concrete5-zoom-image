@@ -1,10 +1,16 @@
 <?php
 
-Loader::block('library_file');
+namespace Concrete\Package\ZoomImage\Block\ZoomImage;
+
+use \Concrete\Core\Block\BlockType\BlockType,
+    \Concrete\Core\Block\BlockController,
+    \Concrete\Core\File\File,
+    \Concrete\Core\View\View,
+    Loader;
 
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-class ZoomImageBlockController extends BlockController {
+class Controller extends BlockController {
 
     protected $btInterfaceWidth = 450;
     protected $btInterfaceHeight = 500;
@@ -38,8 +44,8 @@ class ZoomImageBlockController extends BlockController {
 
         $uh = Loader::helper('concrete/urls');
 
-        $v->addHeaderItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.min.js"></script>', 'CONTROLLER');
-        $v->addHeaderItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>', 'CONTROLLER');
+        $v->addFooterItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.min.js"></script>');
+        $v->addFooterItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>');
     }
 
     function getFileID() {
@@ -64,6 +70,18 @@ class ZoomImageBlockController extends BlockController {
         $args['hideOriginalOnZoom'] = empty($args['hideOriginalOnZoom']) ? 0 : 1;
         $args['limitMaxZoom'] = empty($args['limitMaxZoom']) ? 0 : 1;
         parent::save($args);
+    }
+    
+    public function view() {
+        $ih = Loader::helper('image');
+
+        $fileObject = $this->getFileObject();
+
+        $fileName = $fileObject->getRelativePath();
+        $thumbnail = $ih->getThumbnail($fileObject, intval($this->thumbnailWidth), intval($this->thumbnailHeight));
+
+        $this->set('fileName', $fileName);
+        $this->set('thumbnail', $thumbnail);
     }
 
 }
