@@ -33,21 +33,6 @@ class Controller extends BlockController {
         );
     }
 
-    public function on_page_view() {
-        $html = Loader::helper('html');
-
-        $v = View::GetInstance();
-
-        $b = $this->getBlockObject();
-        $btID = $b->getBlockTypeID();
-        $bt = BlockType::getByID($btID);
-
-        $uh = Loader::helper('concrete/urls');
-
-        $v->addFooterItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.min.js"></script>');
-        $v->addFooterItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>');
-    }
-
     function getFileID() {
         return $this->fID;
     }
@@ -82,6 +67,16 @@ class Controller extends BlockController {
 
         $this->set('fileName', $fileName);
         $this->set('thumbnail', $thumbnail);
+        
+        // add JavaScripts to footer
+        $b = $this->getBlockObject();
+        $btID = $b->getBlockTypeID();
+        $bt = BlockType::getByID($btID);
+
+        $uh = Loader::helper('concrete/urls');
+
+        $this->addFooterItem('<script type="text/javascript" src="' . $uh->getBlockTypeAssetsURL($bt) . '/fancyzoom.min.js"></script>');
+        $this->addFooterItem('<script type="text/javascript">$(document).ready(function() { $("a.zoomImage").fancyZoom({scaleImg: true, closeOnClick: true, directory:"' . $uh->getBlockTypeAssetsURL($bt) . '/images"}); });</script>');
     }
 
 }
