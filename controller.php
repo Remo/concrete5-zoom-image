@@ -4,8 +4,6 @@ namespace Concrete\Package\ZoomImage;
 
 use Concrete\Core\Block\BlockType\BlockType;
 
-defined('C5_EXECUTE') or die('Access Denied.');
-
 class Controller extends \Concrete\Core\Package\Package {
 
     protected $pkgHandle = 'zoom_image';
@@ -25,7 +23,6 @@ class Controller extends \Concrete\Core\Package\Package {
 
         // install block		
         BlockType::installBlockTypeFromPackage('zoom_image', $pkg);
-    }
-    
+    }  
 
 }

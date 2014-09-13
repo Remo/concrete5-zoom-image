@@ -5,10 +5,7 @@ namespace Concrete\Package\ZoomImage\Block\ZoomImage;
 use \Concrete\Core\Block\BlockType\BlockType,
     \Concrete\Core\Block\BlockController,
     \Concrete\Core\File\File,
-    \Concrete\Core\View\View,
     Loader;
-
-defined('C5_EXECUTE') or die(_("Access Denied."));
 
 class Controller extends BlockController {
 
@@ -33,20 +30,8 @@ class Controller extends BlockController {
         );
     }
 
-    function getFileID() {
-        return $this->fID;
-    }
-
-    function getFileObject() {
+    protected function getFileObject() {
         return File::getByID($this->fID);
-    }
-
-    function getAssetFileObject() {
-        return LibraryFileBlockController::getFile($this->fID);
-    }
-
-    function getAltText() {
-        return $this->altText;
     }
 
     public function save($args) {
@@ -56,7 +41,7 @@ class Controller extends BlockController {
         $args['limitMaxZoom'] = empty($args['limitMaxZoom']) ? 0 : 1;
         parent::save($args);
     }
-    
+
     public function view() {
         $ih = Loader::helper('image');
 
@@ -67,7 +52,7 @@ class Controller extends BlockController {
 
         $this->set('fileName', $fileName);
         $this->set('thumbnail', $thumbnail);
-        
+
         // add JavaScripts to footer
         $b = $this->getBlockObject();
         $btID = $b->getBlockTypeID();
@@ -80,5 +65,3 @@ class Controller extends BlockController {
     }
 
 }
-
-?>

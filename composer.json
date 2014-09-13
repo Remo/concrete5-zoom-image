@@ -1,6 +1,8 @@
 {
     "name": "remo/zoom_image",
+    "description": "Zoom Image Block for concrete5",
     "type": "concrete5-package",
+    "license": "MIT",
     "keywords": ["concrete5"],
     "authors": [
         {
