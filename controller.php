@@ -9,7 +9,7 @@ defined('C5_EXECUTE') or die('Access Denied.');
 class Controller extends \Concrete\Core\Package\Package {
 
     protected $pkgHandle = 'zoom_image';
-    protected $appVersionRequired = '5.2.0';
+    protected $appVersionRequired = '5.7.0';
     protected $pkgVersion = '2.0.0';
 
     public function getPackageDescription() {
