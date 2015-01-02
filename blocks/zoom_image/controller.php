@@ -31,7 +31,10 @@ class Controller extends BlockController {
     }
 
     protected function getFileObject() {
-        return File::getByID($this->fID);
+        if ($this->fID > 0) {
+            return File::getByID($this->fID);
+        }
+        return null;
     }
 
     public function save($args) {
@@ -40,6 +43,15 @@ class Controller extends BlockController {
         $args['hideOriginalOnZoom'] = empty($args['hideOriginalOnZoom']) ? 0 : 1;
         $args['limitMaxZoom'] = empty($args['limitMaxZoom']) ? 0 : 1;
         parent::save($args);
+    }
+
+    public function add() {
+        $this->set('bl', null);
+    }
+
+    public function edit() {
+        $bf = $this->getFileObject();
+        $this->set('bf', $bf);
     }
 
     public function view() {

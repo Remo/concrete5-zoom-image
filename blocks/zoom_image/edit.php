@@ -8,12 +8,6 @@ $assetLibraryPassThru = array(
 );
 $al = Loader::helper('concrete/asset_library');
 
-$bf = null;
-
-if ($controller->getFileID() > 0) {
-    $bf = $controller->getFileObject();
-}
-
 $altText = $controller->altText;
 $thumbnailWidth = $controller->thumbnailWidth;
 $thumbnailHeight = $controller->thumbnailHeight;
@@ -21,4 +15,4 @@ $thumbnailHeight = $controller->thumbnailHeight;
 $hideOriginalOnZoom = $controller->hideOriginalOnZoom ? 1 : 0;
 $limitMaxZoom = $controller->limitMaxZoom ? 1 : 0;
 
-include('form.php');
+$this->inc('form.php', get_defined_vars());

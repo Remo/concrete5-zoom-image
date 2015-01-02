@@ -7,7 +7,6 @@ $assetLibraryPassThru = array(
     'type' => 'image'
 );
 $al = Loader::helper('concrete/asset_library');
-$bf = null;
 
 $altText = '';
 $thumbnailWidth = 200;
@@ -15,4 +14,4 @@ $thumbnailHeight = 200;
 $hideOriginalOnZoom = 0;
 $limitMaxZoom = 1;
 
-include('form.php');
+$this->inc('form.php', get_defined_vars());
